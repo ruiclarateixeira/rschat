@@ -7,19 +7,29 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 
 /**
+ * Represents an online user
  *
-
+ * It's built to run in its own thread waiting for the user's input and
+ * is also used to communicate back to the user
  */
 public class User implements Runnable {
     private Socket socket;
     private String name;
     private static final String USERNAME_REGEX = "^[a-zA-Z0-9]*$";
 
+    /**
+     *
+     * @param socket socket the client is connected to
+     * @throws IOException if it fails to communicate with the client
+     */
     public User(Socket socket) throws IOException {
         this.socket = socket;
         sendToClient("Welcome!\n");
     }
 
+    /**
+     * Wait for user input
+     */
     public void run() {
         BufferedReader inFromClient;
         try {

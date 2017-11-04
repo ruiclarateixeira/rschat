@@ -3,6 +3,9 @@ package com.ruiteixeira.chatapp.user;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Online user management
+ */
 class UserManager {
     private static Map<String, User> users = new ConcurrentHashMap<String, User>();
 
